@@ -11,7 +11,20 @@ spec:
                   - "/bin/sh"
                   - "-c"
                   args:
-                  - cd ./minst && pwd && python3 main.py && echo "complete"
+                  - cd ./minst1 && pwd && python3 main.py && echo "complete"
+                  resources:
+                          limits:
+                                  nvidia.com/gpu: 1
+                  volumeMounts:
+                  - name: examples
+                    mountPath: /workspace
+                - name: pytorch2
+                  image: pytorch/pytorch
+                  command:
+                  - "/bin/sh"
+                  - "-c"
+                  args:
+                  - cd ./minst2 && pwd && python3 main.py && echo "complete"
                   resources:
                           limits:
                                   nvidia.com/gpu: 1
